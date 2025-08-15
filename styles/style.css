@@ -1,118 +1,383 @@
-html,
-body {
+/* ==================================== */
+/* リセットと基本スタイル */
+/* ==================================== */
+/* 全要素のリセットはファイルの先頭に配置 */
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Press Start 2P', cursive;
+    box-sizing: border-box;
 }
 
-header {
+
+body {
+    font-family: "DotGothic16", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    padding-top: 6rem; /* 4remから6remに増やします */
+    background-color: #000;
+}
+
+/* ==================================== */
+/* ヘッダー */
+/* ==================================== */
+
+main {
+    width: 100%;
+    /* 新たに追加 */
+    max-width: 1800px; /* 必要に応じて調整してください */
+    margin: 0 auto;
+}
+
+#main-header {
     position: fixed;
     top: 0;
     left: 0;
-    background-image: url("../images/neon-street1.jpg");
-    width: 100%;
-    height: 100px;
-    border-bottom: 3px solid #cfcfcf;
-    z-index: 9999;
+    right: 0;
+    z-index: 50;
+    background-color: rgba(255, 255, 255, 0.9);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-image: url(../images/neon-street1.jpg);
+}
+
+#main-header nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#main-header img {
+    height: 2.5rem;
+}
+
+.header-nav-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.header-nav-links a {
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    font-family: 'DotGothic16', sans-serif;
+}
+
+.header-nav-links a:hover {
+    color: #84cc16; /* Tailwind's lime-500 */
+}
+
+/* ==================================== */
+/* メインコンテンツ */
+/* ==================================== */
+
+.dynamic-height-section {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* h1 と p を縦方向中央に配置 */
     align-items: center;
-    /* h1 と p を横方向中央に配置 */
-    color: white;
-    text-align: center;
-}
-
-
-header p {
-    margin-bottom: 0.8rem;
-    font-size: 0.6rem;
-}
-
-.container {
-    display: flex;
-    /* ヘッダーの高さ分だけ下にずらす */
-    margin-top: 80px;
-    /* 画面の高さいっぱいにしてヘッダー分引く */
-    height: calc(100vh - 80px);
-}
-
-.section {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    color: white;
-}
-
-.left {
-    background-color: #2e8b57;
-}
-
-.center {
-    background-color: #000;
-    position: relative;
     overflow: hidden;
-    z-index: 0;
+    color: #fff;
+    text-align: center;
+    padding: 7rem 1rem; /* 上部のパディングを5remから7remに増やします */
+    min-height: 95vh;
+    width: 100%;
 }
 
-.right {
-    background-color: #4682b4;
-}
-
-.video-wrapper {
+.section-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    filter: blur(6px);
+    object-fit: fill;
+    z-index: -2;
+    filter: blur(4px);
+}
+
+.content-wrapper {
     position: relative;
+    z-index: 10;
+    width: 100%;
+    /* 高さの指定を削除 */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-video {
+/* 新しいコンテナのスタイル */
+.main-content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 42rem;
+    margin: 0 auto; /* この行を追加してください。 */
+}
+
+.content-wrapper a {
+    margin-bottom: 100px;
+}
+
+.content-wrapper.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* コンテンツ内の要素に遅延アニメーションを適用 (オプション) */
+.content-wrapper.active h2 {
+    transition-delay: 0.2s;
+}
+
+.content-wrapper.active p {
+    transition-delay: 0.4s;
+}
+
+.content-wrapper.active .play-button {
+    transition-delay: 0.6s;
+}
+
+.text-content {
+    max-width: 48rem;
+    margin: 0 auto;
+}
+
+.text-content h2 {
+    font-size: 2.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'DotGothic16', sans-serif;
+    color: #fff;
+}
+
+.text-content p {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-family: 'DotGothic16', sans-serif;
+}
+
+/* 動画コンテナ */
+.video-player-container {
+    position: relative;
+    width: 100%;
+    /* max-widthを削除 */
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    background-color: #000;
+    border: 4px solid #78716c;
+    padding-bottom: 56.25%; /* 16:9のアスペクト比を維持 */
+    height: 0;
+    border-radius: 9px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+}
+
+.video-player-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-    /* イベント無効でホバー通す */
+    object-fit: contain;
 }
 
-#play-button {
+.play-button {
     position: absolute;
     top: 50%;
     left: 50%;
-    /* 中央に配置 */
     transform: translate(-50%, -50%);
-    /* 中央揃えのための調整 */
-    text-align: center;
-    z-index: 1;
-    /* 動画の上にボタンを配置 */
-}
-
-#play-button a {
-    display: inline-block;
-    background-color: #00ff00;
-    color: #000;
-    padding: 1rem 2rem;
-    border: 2px solid #00ff00;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 8px;
-    box-shadow: 0 0 10px;
-    transition: all 0.3s ease;
-}
-
-#play-button a:hover {
     background-color: #000;
-    color: #00ff00;
+    color: #84cc16;
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+    font-family: 'DotGothic16', sans-serif;
 }
 
+.play-button:hover {
+    background-color: #84cc16;
+    color: #000;
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* .play-button.red-hover:hover {
+    background-color: #ef4444;
+    color: #fff;
+} */
+
+/* ステッカー画像 */
+.sticker {
+    position: absolute;
+    object-fit: cover;
+}
+
+.sticker-1 {
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    width: 10rem;
+    height: 12.5rem;
+}
+
+.sticker-2 {
+    bottom: 25%;
+    right: 25%;
+    transform: translate(50%, 50%);
+    width: 10rem;
+    height: 12.5rem;
+}
+
+.sticker-3,
+.sticker-4,
+.sticker-5,
+.sticker-6 {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 9999px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 640px) {
+    .sticker-3,
+    .sticker-4,
+    .sticker-5,
+    .sticker-6 {
+        width: 6rem;
+        height: 6rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .sticker-3,
+    .sticker-4,
+    .sticker-5,
+    .sticker-6 {
+        width: 7rem;
+        height: 7rem;
+    }
+}
+
+.sticker-3 {
+    top: 25%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.sticker-4 {
+    bottom: 25%;
+    right: 25%;
+    transform: translate(50%, 50%);
+}
+
+.sticker-5 {
+    bottom: 25%;
+    left: 25%;
+    transform: translate(50%, 50%);
+}
+
+.sticker-6 {
+    top: 50%;
+    right: 25%;
+    transform: translate(-50%, 0);
+}
+
+/* ==================================== */
 /* フッター */
+/* ==================================== */
 footer {
     background-color: #1d1d1d;
     color: #888;
-    text-align: center;
+    text-align: center; /* 中央寄せを維持 */
     padding: 1rem;
-    font-size: 0.5rem;
+    font-size: 1rem;
+
+    /* 新たに追加 */
+    width: 100%; /* 画面幅いっぱいに広げる */
+}
+
+/* ==================================== */
+/* 上に戻るボタン */
+/* ==================================== */
+#back-to-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 50;
+    padding: 0.5rem;
+    width: 7rem;
+    height: 7rem;
+    text-align: center;
+}
+
+#back-to-top-btn p {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-weight: bold;
+    font-family: 'DotGothic16', sans-serif;
+    font-size: 0.875rem;
+}
+
+#back-to-top-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.float-animation {
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* ==================================== */
+/* アニメーションキーフレーム */
+/* ==================================== */
+
+/* スピンアニメーション */
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #fff;
+    width: 24px;
+    height: 24px;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

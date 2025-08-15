@@ -3,71 +3,189 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Pygameサイト</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>Pygameサイト</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
-<body>
+<body class="font-sans antialiased text-gray-800">
 
-    <header>
-        <div class="headimg">
-        <picture>
-        <img src="images/pygame.png" alt="" />
-        </picture>
-    </div>
-        <p>あらゆる敵を倒してゲームをクリアしよう！</p>
+    <header id="main-header">
+        <nav class="container mx-auto flex justify-between items-center">
+            <img src="images/pygame.png" alt="Pygame Logo" class="h-10" />
+            <div class="header-nav-links">
+                <a href="#section1">ステージ1</a>
+                <a href="#section2">ステージ2</a>
+                <a href="#section3">ステージ3</a>
+            </div>
+        </nav>
     </header>
 
-    <div class="container">
-        <div class="section left">
-            左エリア
-        </div>
-
-        <div class="section center" id="videoArea">
-            <div class="video-wrapper">
-                <video id="hoverVideo" muted loop>
-                    <source src="video/sample.mp4" type="video/mp4">
-                    お使いのブラウザは video タグに対応していません。
-                </video>
+    <main>
+        <section id="section1" class="dynamic-height-section">
+            <img src="images/Blue-sky-and-grassland1.jpg" alt="Section 1 Background" class="section-background-image">
+            <div class="content-wrapper">
+                <div class="main-content-container">
+                    <div class="text-content">
+                        <h2>ステージ1</h2>
+                        <p>矢印キーでキャラクターを移動し、スペースキーで攻撃<br>敵の攻撃に3回当たるとゲームオーバー。敵を倒してゲームクリア！</p>
+                    </div>
+                    <div class="video-player-container">
+                        <video autoplay loop muted playsinline>
+                            <source src="video/Level1.mp4" type="video/mp4">
+                            あなたのブラウザは動画タグをサポートしていません。
+                        </video>
+                        <a href="https://okamoto-airi.github.io/web-pygame_level1_PC/" target="_blank"
+                            class="play-button">
+                            ステージ1をプレイ！（PC版）
+                        </a>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div id="play-button">
-                <a href="https://okamoto-airi.github.io/web-pygame_level1_PC/" target="_blank" rel="noopener noreferrer">
-                    レベル1を</br>スタート！
-                </a>
+        <section id="section2" class="dynamic-height-section">
+            <img src="images/Thunderclouds-and-lightning-on-the-grassland3.jpg" alt="Section 2 Background"
+                class="section-background-image">
+            <div class="content-wrapper">
+                <div class="main-content-container">
+                    <div class="text-content">
+                        <h2>ステージ2</h2>
+                        <p>矢印キーでキャラクターを移動し、スペースキーで攻撃<br>敵の攻撃に3回当たるとゲームオーバー。敵を倒してゲームクリア！</p>
+                    </div>
+                    <div class="video-player-container">
+                        <video autoplay loop muted playsinline>
+                            <source src="video/Level2.mp4" type="video/mp4">
+                            あなたのブラウザは動画タグをサポートしていません。
+                        </video>
+                        <a href="https://okamoto-airi.github.io/web-pygame_level2-PC/" target="_blank"
+                            class="play-button">
+                            ステージ2をプレイ！（PC版）
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="section right">
-            右エリア
-        </div>
-    </div>
+        <section id="section3" class="dynamic-height-section">
+            <img src="images/A-magical-otherworldly-space2.jpg" alt="Section 3 Background"
+                class="section-background-image">
+            <div class="content-wrapper">
+                <div class="main-content-container">
+                    <div class="text-content">
+                        <h2>ステージ3</h2>
+                        <p>矢印キーでキャラクターを移動し、スペースキーで攻撃<br>敵の攻撃に3回当たるとゲームオーバー。敵を倒してゲームクリア！</p>
+                    </div>
+                    <div class="video-player-container">
+                        <video autoplay loop muted playsinline>
+                            <source src="video/Level3.mp4" type="video/mp4">
+                            あなたのブラウザは動画タグをサポートしていません。
+                        </video>
+                        <a href="https://okamoto-airi.github.io/web-pygame_level3-PC/" target="_blank"
+                            class="play-button">
+                            ステージ3をプレイ！（PC版）
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <p>&copy; 2025 SIW チーム5 All rights reserved.</p>
     </footer>
 
+    <a href="#" id="back-to-top-btn" class="float-animation">
+        <p>上に戻る</p>
+        <img src="images/character_monster_slime_green.png" alt="上に戻る">
+    </a>
     <script>
-        $(function () {
-            const video = document.getElementById('hoverVideo');
-            const videoArea = document.getElementById('videoArea');
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('main-header');
+            const sections = document.querySelectorAll('.dynamic-height-section');
+            const backToTopBtn = document.getElementById('back-to-top-btn');
 
-            // ホバーで再生・停止
-            videoArea.addEventListener('mouseenter', () => {
-                video.play();
+            function adjustLayout() {
+                const headerHeight = header.offsetHeight;
+                document.body.style.paddingTop = `${headerHeight}px`;
+
+                const viewportHeight = window.innerHeight;
+                const sectionHeight = viewportHeight - headerHeight;
+
+                sections.forEach(section => {
+                    section.style.height = `${sectionHeight}px`;
+                });
+            }
+
+            adjustLayout();
+            window.addEventListener('resize', adjustLayout);
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    const contentWrapper = entry.target.querySelector('.content-wrapper');
+                    if (entry.isIntersecting) {
+                        if (contentWrapper) {
+                            contentWrapper.classList.add('active');
+                        }
+                    } else {
+                        if (contentWrapper) {
+                            contentWrapper.classList.remove('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
             });
 
-            videoArea.addEventListener('mouseleave', () => {
-                video.pause();
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        // ヘッダーの高さを取得
+                        const headerHeight = document.getElementById('main-header').offsetHeight;
+
+                        // スクロール先の位置を計算
+                        const targetPosition = targetElement.offsetTop - headerHeight;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 200) {
+                    backToTopBtn.classList.remove('hidden');
+                } else {
+                    backToTopBtn.classList.add('hidden');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
 </body>
 
 </html>
-
