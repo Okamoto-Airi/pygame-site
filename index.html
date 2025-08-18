@@ -31,7 +31,9 @@
                 <div class="main-content-container">
                     <div class="text-content">
                         <h2>ステージ1</h2>
-                        <p>矢印キーでキャラクターを移動し、スペースキーで攻撃<br>敵の攻撃に3回当たるとゲームオーバー。敵を倒してゲームクリア！</p>
+                        <p><span style="color: rgb(253, 134, 134);">左右</span>の矢印キーでキャラクターを移動し、
+                            <span style="color: rgb(253, 134, 134);">スペースキー</span>で攻撃<br>敵の攻撃に3回当たるとゲームオーバー。
+                            敵の攻撃は<span style="color: rgb(253, 134, 134);">相殺！</span><br>時間内にUFOを倒してゲームクリア</p>
                     </div>
                     <div class="video-player-container">
                         <video autoplay loop muted playsinline>
@@ -54,7 +56,10 @@
                 <div class="main-content-container">
                     <div class="text-content">
                         <h2>ステージ2</h2>
-                        <p>矢印キーでキャラクターを移動し、スペースキーで攻撃<br>敵の攻撃に3回当たるとゲームオーバー。敵を倒してゲームクリア！</p>
+                        <p><span style="color: rgb(253, 134, 134);">上下</span>の矢印キーでキャラクターを移動し、
+                            <span style="color: rgb(253, 134, 134);">スペースキー</span><br>で攻撃敵の攻撃に3回当たるとゲームオーバー。
+                            <span style="color: rgb(253, 134, 134);">相殺不可の攻撃</span><br>もあるので注意！
+                            時間内にドラゴンを倒してゲームクリア！</p>
                     </div>
                     <div class="video-player-container">
                         <video autoplay loop muted playsinline>
@@ -77,7 +82,9 @@
                 <div class="main-content-container">
                     <div class="text-content">
                         <h2>ステージ3</h2>
-                        <p>矢印キーでキャラクターを移動し、スペースキーで攻撃<br>敵の攻撃に3回当たるとゲームオーバー。敵を倒してゲームクリア！</p>
+                        <p><span style="color: rgb(253, 134, 134);">上下左右の</span>矢印キーでキャラクターを移動し、
+                            <span style="color: rgb(253, 134, 134);">WASD＋スペースキー</span>で攻撃<br>敵の攻撃に3回当たるとゲームオーバー。
+                            <span style="color: rgb(253, 134, 134);">最高難易度</span>で最高評価クリアを目指せ！</p>
                     </div>
                     <div class="video-player-container">
                         <video autoplay loop muted playsinline>
@@ -103,89 +110,115 @@
         <img src="images/character_monster_slime_green.png" alt="上に戻る">
     </a>
     <script>
+        // DOM（HTML）がすべて読み込まれてから実行される処理
         document.addEventListener('DOMContentLoaded', () => {
-            const header = document.getElementById('main-header');
-            const sections = document.querySelectorAll('.dynamic-height-section');
-            const backToTopBtn = document.getElementById('back-to-top-btn');
+            const header = document.getElementById('main-header'); // 固定ヘッダーの要素を取得
+            const sections = document.querySelectorAll('.dynamic-height-section'); // 高さを動的に調整するセクション群
+            const backToTopBtn = document.getElementById('back-to-top-btn'); // 「トップへ戻る」ボタン
 
             function adjustLayout() {
-                const headerHeight = header.offsetHeight;
+                const headerHeight = header.offsetHeight; // ヘッダーの高さ
+
+                // body に padding を設定してヘッダー分のスペースを確保
                 document.body.style.paddingTop = `${headerHeight}px`;
 
-                const viewportHeight = window.innerHeight;
-                const sectionHeight = viewportHeight - headerHeight;
-
+                // 各セクションを個別に処理
                 sections.forEach(section => {
-                    section.style.height = `${sectionHeight}px`;
+                    const contentWrapper = section.querySelector('.content-wrapper');
+                    if (contentWrapper) {
+                        const contentHeight = contentWrapper.offsetHeight; // 中身の高さ
+                        // 中身の高さに合わせつつ、ヘッダーが被らないようにする
+                        section.style.minHeight = `${contentHeight + headerHeight}px`;
+                        // ← 高さ固定ではなく minHeight にすることで伸縮に対応
+                    }
                 });
             }
 
-            adjustLayout();
-            window.addEventListener('resize', adjustLayout);
 
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.5
-            };
+                adjustLayout(); // ページ読み込み時に一度実行
+                window.addEventListener('resize', adjustLayout);
+                // 画面サイズが変わったときも再計算してレイアウトを更新
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    const contentWrapper = entry.target.querySelector('.content-wrapper');
-                    if (entry.isIntersecting) {
-                        if (contentWrapper) {
-                            contentWrapper.classList.add('active');
+                // --- IntersectionObserverの設定（要素が画面内に入ったか監視する） ---
+                const observerOptions = {
+                    root: null,          // ビューポートを基準に監視
+                    rootMargin: '0px',   // 余白なし
+                    threshold: 0.5       // 要素が50%以上見えたときに「交差した」と判定
+                };
+
+                // 交差状態が変わったときのコールバック処理
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        const contentWrapper = entry.target.querySelector('.content-wrapper');
+                        // セクション内の .content-wrapper を取得
+
+                        if (entry.isIntersecting) {
+                            // 監視対象が50%以上見えたとき
+                            if (contentWrapper) {
+                                contentWrapper.classList.add('active'); // アニメーション開始用クラスを付与
+                            }
+                        } else {
+                            // 監視対象が画面外に出たとき
+                            if (contentWrapper) {
+                                contentWrapper.classList.remove('active'); // クラスを削除（リセット）
+                            }
                         }
+                    });
+                }, observerOptions);
+
+                // 各セクションを監視対象に追加
+                sections.forEach(section => {
+                    observer.observe(section);
+                });
+
+                // --- ナビゲーションリンクをクリックしたときの処理 ---
+                document.querySelectorAll('nav a').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault(); // デフォルトのリンク移動を無効化
+
+                        const targetId = this.getAttribute('href'); // クリックしたリンクの href 属性を取得（例: "#section1"）
+                        const targetElement = document.querySelector(targetId); // 対応する要素を取得
+
+                        if (targetElement) {
+                            // ヘッダーの高さを取得（スクロール位置の補正用）
+                            const headerHeight = document.getElementById('main-header').offsetHeight;
+
+                            // スクロール先の位置 = 対象要素の位置 - ヘッダー高さ
+                            const targetPosition = targetElement.offsetTop - headerHeight;
+
+                            // スムーズにスクロール
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+
+                // --- スクロール時に「トップへ戻る」ボタンを表示/非表示にする ---
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 200) {
+                        // スクロール量が200pxを超えたら表示
+                        backToTopBtn.classList.remove('hidden');
                     } else {
-                        if (contentWrapper) {
-                            contentWrapper.classList.remove('active');
-                        }
+                        // それ以下なら非表示
+                        backToTopBtn.classList.add('hidden');
                     }
                 });
-            }, observerOptions);
 
-            sections.forEach(section => {
-                observer.observe(section);
-            });
+                // --- 「トップへ戻る」ボタンをクリックしたときの処理 ---
+                backToTopBtn.addEventListener('click', (e) => {
+                    e.preventDefault(); // デフォルトのリンク動作を無効化
 
-            document.querySelectorAll('nav a').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-
-                    if (targetElement) {
-                        // ヘッダーの高さを取得
-                        const headerHeight = document.getElementById('main-header').offsetHeight;
-
-                        // スクロール先の位置を計算
-                        const targetPosition = targetElement.offsetTop - headerHeight;
-
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
+                    // ページ最上部へスムーズスクロール
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                 });
             });
-
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 200) {
-                    backToTopBtn.classList.remove('hidden');
-                } else {
-                    backToTopBtn.classList.add('hidden');
-                }
-            });
-
-            backToTopBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        });
     </script>
+
 </body>
 
 </html>
