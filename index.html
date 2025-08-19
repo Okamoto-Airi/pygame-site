@@ -31,9 +31,12 @@
                 <div class="main-content-container">
                     <div class="text-content">
                         <h2>ステージ1</h2>
-                        <p><span style="color: rgb(253, 134, 134);">左右</span>の矢印キーでキャラクターを移動し、
-                            <span style="color: rgb(253, 134, 134);">スペースキー</span>で攻撃<br>敵の攻撃に3回当たるとゲームオーバー。
-                            敵の攻撃は<span style="color: rgb(253, 134, 134);">相殺！</span><br>時間内にUFOを倒してゲームクリア</p>
+                            <p>キャラクター移動・・・<span style="color: rgb(250, 151, 151);">左右</span>の矢印キー<br>
+                                攻撃・・・<span style="color: rgb(250, 151, 151);">スペースキー</span><br>
+                                敵の攻撃に3回当たるとゲームオーバー。<br>
+                                敵の攻撃は<span style="color: rgb(250, 151, 151);">相殺！</span><br>
+                                時間内にUFOを倒してゲームクリア
+                            </p>
                     </div>
                     <div class="video-player-container">
                         <video autoplay loop muted playsinline>
@@ -56,10 +59,12 @@
                 <div class="main-content-container">
                     <div class="text-content">
                         <h2>ステージ2</h2>
-                        <p><span style="color: rgb(253, 134, 134);">上下</span>の矢印キーでキャラクターを移動し、
-                            <span style="color: rgb(253, 134, 134);">スペースキー</span>で攻撃<br>敵の攻撃に3回当たるとゲームオーバー。
-                            <span style="color: rgb(253, 134, 134);">相殺不可の攻撃</span><br>もあるので注意！
-                            時間内にドラゴンを倒してゲームクリア！</p>
+                        <p>キャラクター移動・・・<span style="color: rgb(250, 151, 151);">上下</span>の矢印キー<br>
+                            攻撃・・・<span style="color: rgb(250, 151, 151);">スペースキー</span><br>
+                            敵の攻撃に3回当たるとゲームオーバー。<br>
+                            <span style="color: rgb(250, 151, 151);">相殺不可の攻撃</span>もあるので注意！<br>
+                            時間内にドラゴンを倒してゲームクリア！
+                        </p>
                     </div>
                     <div class="video-player-container">
                         <video autoplay loop muted playsinline>
@@ -82,9 +87,11 @@
                 <div class="main-content-container">
                     <div class="text-content">
                         <h2>ステージ3</h2>
-                        <p><span style="color: rgb(253, 134, 134);">上下左右の</span>矢印キーでキャラクターを移動し、
-                            <span style="color: rgb(253, 134, 134);">WASD＋スペースキー</span>で攻撃<br>敵の攻撃に3回当たるとゲームオーバー。
-                            <span style="color: rgb(253, 134, 134);">最高難易度</span>で最高評価クリアを目指せ！</p>
+                        <p>キャラクター移動・・・<span style="color: rgb(250, 151, 151);">上下左右</span>の矢印キー<br>
+                            攻撃・・・<span style="color: rgb(250, 151, 151);">WASD＋スペースキー</span><br>
+                            敵の攻撃に3回当たるとゲームオーバー。<br>
+                            <span style="color: rgb(250, 151, 151);">最高難易度</span>で最高評価クリアを目指せ！
+                        </p>
                     </div>
                     <div class="video-player-container">
                         <video autoplay loop muted playsinline>
@@ -135,88 +142,88 @@
             }
 
 
-                adjustLayout(); // ページ読み込み時に一度実行
-                window.addEventListener('resize', adjustLayout);
-                // 画面サイズが変わったときも再計算してレイアウトを更新
+            adjustLayout(); // ページ読み込み時に一度実行
+            window.addEventListener('resize', adjustLayout);
+            // 画面サイズが変わったときも再計算してレイアウトを更新
 
-                // --- IntersectionObserverの設定（要素が画面内に入ったか監視する） ---
-                const observerOptions = {
-                    root: null,          // ビューポートを基準に監視
-                    rootMargin: '0px',   // 余白なし
-                    threshold: 0.1       // 要素が50%以上見えたときに「交差した」と判定
-                };
+            // --- IntersectionObserverの設定（要素が画面内に入ったか監視する） ---
+            const observerOptions = {
+                root: null,          // ビューポートを基準に監視
+                rootMargin: '0px',   // 余白なし
+                threshold: 0.1       // 要素が50%以上見えたときに「交差した」と判定
+            };
 
-                // 交差状態が変わったときのコールバック処理
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        const contentWrapper = entry.target.querySelector('.content-wrapper');
-                        // セクション内の .content-wrapper を取得
+            // 交差状態が変わったときのコールバック処理
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    const contentWrapper = entry.target.querySelector('.content-wrapper');
+                    // セクション内の .content-wrapper を取得
 
-                        if (entry.isIntersecting) {
-                            // 監視対象が50%以上見えたとき
-                            if (contentWrapper) {
-                                contentWrapper.classList.add('active'); // アニメーション開始用クラスを付与
-                            }
-                        } else {
-                            // 監視対象が画面外に出たとき
-                            if (contentWrapper) {
-                                contentWrapper.classList.remove('active'); // クラスを削除（リセット）
-                            }
+                    if (entry.isIntersecting) {
+                        // 監視対象が50%以上見えたとき
+                        if (contentWrapper) {
+                            contentWrapper.classList.add('active'); // アニメーション開始用クラスを付与
                         }
-                    });
-                }, observerOptions);
-
-                // 各セクションを監視対象に追加
-                sections.forEach(section => {
-                    observer.observe(section);
-                });
-
-                // --- ナビゲーションリンクをクリックしたときの処理 ---
-                document.querySelectorAll('nav a').forEach(anchor => {
-                    anchor.addEventListener('click', function (e) {
-                        e.preventDefault(); // デフォルトのリンク移動を無効化
-
-                        const targetId = this.getAttribute('href'); // クリックしたリンクの href 属性を取得（例: "#section1"）
-                        const targetElement = document.querySelector(targetId); // 対応する要素を取得
-
-                        if (targetElement) {
-                            // ヘッダーの高さを取得（スクロール位置の補正用）
-                            const headerHeight = document.getElementById('main-header').offsetHeight;
-
-                            // スクロール先の位置 = 対象要素の位置 - ヘッダー高さ
-                            const targetPosition = targetElement.offsetTop - headerHeight;
-
-                            // スムーズにスクロール
-                            window.scrollTo({
-                                top: targetPosition,
-                                behavior: 'smooth'
-                            });
-                        }
-                    });
-                });
-
-                // --- スクロール時に「トップへ戻る」ボタンを表示/非表示にする ---
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 200) {
-                        // スクロール量が200pxを超えたら表示
-                        backToTopBtn.classList.remove('hidden');
                     } else {
-                        // それ以下なら非表示
-                        backToTopBtn.classList.add('hidden');
+                        // 監視対象が画面外に出たとき
+                        if (contentWrapper) {
+                            contentWrapper.classList.remove('active'); // クラスを削除（リセット）
+                        }
                     }
                 });
+            }, observerOptions);
 
-                // --- 「トップへ戻る」ボタンをクリックしたときの処理 ---
-                backToTopBtn.addEventListener('click', (e) => {
-                    e.preventDefault(); // デフォルトのリンク動作を無効化
+            // 各セクションを監視対象に追加
+            sections.forEach(section => {
+                observer.observe(section);
+            });
 
-                    // ページ最上部へスムーズスクロール
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
+            // --- ナビゲーションリンクをクリックしたときの処理 ---
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault(); // デフォルトのリンク移動を無効化
+
+                    const targetId = this.getAttribute('href'); // クリックしたリンクの href 属性を取得（例: "#section1"）
+                    const targetElement = document.querySelector(targetId); // 対応する要素を取得
+
+                    if (targetElement) {
+                        // ヘッダーの高さを取得（スクロール位置の補正用）
+                        const headerHeight = document.getElementById('main-header').offsetHeight;
+
+                        // スクロール先の位置 = 対象要素の位置 - ヘッダー高さ
+                        const targetPosition = targetElement.offsetTop - headerHeight;
+
+                        // スムーズにスクロール
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             });
+
+            // --- スクロール時に「トップへ戻る」ボタンを表示/非表示にする ---
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 200) {
+                    // スクロール量が200pxを超えたら表示
+                    backToTopBtn.classList.remove('hidden');
+                } else {
+                    // それ以下なら非表示
+                    backToTopBtn.classList.add('hidden');
+                }
+            });
+
+            // --- 「トップへ戻る」ボタンをクリックしたときの処理 ---
+            backToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault(); // デフォルトのリンク動作を無効化
+
+                // ページ最上部へスムーズスクロール
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 
 </body>
