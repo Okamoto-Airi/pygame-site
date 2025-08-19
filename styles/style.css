@@ -289,7 +289,7 @@ footer {
 /* ==================================== */
 /* 上に戻るボタン */
 /* ==================================== */
-@media (min-width: 528px) {
+@media (min-width: 529px) {
     #back-to-top-btn {
         position: fixed;
         bottom: 2rem;
