@@ -29,8 +29,6 @@ body {
 
 main {
     width: 100%;
-    /* 新たに追加 */
-    max-width: 1800px;
     /* 必要に応じて調整してください */
     margin: 0 auto;
 }
