@@ -10,7 +10,7 @@
 
 ---
 
-## 🎮 ステージ1
+## ステージ1
 <p align="center">
     <img src="images/stage1.gif" alt="ステージ1デモ" width="300">
 </p>
@@ -24,21 +24,21 @@
 
 ---
 
-## 🎮 ステージ2
+## ステージ2
 <p align="center">
     <img src="images/stage2.gif" alt="ステージ2デモ" width="300">
 </p>
 
 - 移動：**W / S**
 - 攻撃：**→キー**
-- 一部の攻撃は **相殺不可⚡**
+- 一部の攻撃は **相殺不可**
 - ドラゴンを倒してゲームクリア！
 
 👉 [ステージ2をプレイ！（PC版）](https://okamoto-airi.github.io/web-pygame_level2-PC/)
 
 ---
 
-## 🎮 ステージ3
+## ステージ3
 <p align="center">
     <img src="images/stage3.gif" alt="ステージ3デモ" width="300">
 </p>
@@ -52,7 +52,7 @@
 
 ---
 
-## 📌 遊び方のヒント
+## 遊び方のヒント
 - 敵の攻撃に **3回当たるとゲームオーバー**
 - ステージごとに操作方法が変わるので要チェック！
 - キーボード操作のみ対応（PC推奨）
@@ -64,7 +64,7 @@
 
 ---
 
-## 💻 使用技術
+## 使用技術
 
 <p align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" width="40" height="40"/>
@@ -74,7 +74,7 @@
 
 ---
 
-## ✨ 工夫した点
+## 工夫した点
 - **動画の上にプレイボタンを配置**し、直感的に操作できるように工夫
 - **背景に画像を使用**することで、遊ぶ前からワクワク感を演出
 - **重要なキーワードを色付きで強調**し、説明文を読みやすく整理
