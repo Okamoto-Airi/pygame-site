@@ -8,8 +8,6 @@
   <img src="images/site.png" alt="site_img" height="300px" width="637">
 </p>
 
----
-
 ## ステージ1
 <p align="center">
     <img src="images/stage1.gif" alt="ステージ1デモ" width="300">
@@ -21,8 +19,6 @@
 - UFOを時間内に倒すとクリア！
 
 👉 [ステージ1をプレイ！（PC版）](https://okamoto-airi.github.io/web-pygame_level1_PC/)
-
----
 
 ## ステージ2
 <p align="center">
@@ -36,8 +32,6 @@
 
 👉 [ステージ2をプレイ！（PC版）](https://okamoto-airi.github.io/web-pygame_level2-PC/)
 
----
-
 ## ステージ3
 <p align="center">
     <img src="images/stage3.gif" alt="ステージ3デモ" width="300">
@@ -50,19 +44,13 @@
 
 👉 [ステージ3をプレイ！（PC版）](https://okamoto-airi.github.io/web-pygame_level3-PC/)
 
----
-
 ## 遊び方のヒント
 - 敵の攻撃に **3回当たるとゲームオーバー**
 - ステージごとに操作方法が変わるので要チェック！
 - キーボード操作のみ対応（PC推奨）
 
----
-
 ## 👥 制作
 2025年 SIW チーム5
-
----
 
 ## 使用技術
 
@@ -71,8 +59,6 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" width="40" height="40"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" width="40" height="40"/>
 </p>
-
----
 
 ## 特徴
 - **動画の上にプレイボタンを配置**し、直感的に操作できるように工夫
