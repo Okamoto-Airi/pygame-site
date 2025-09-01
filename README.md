@@ -1,4 +1,4 @@
-# pygame-site
+# Pygame-site
 # 🌟 Pygame Web Showcase
 
 このサイトでは、チーム制作で作った **3つのPygameステージ** を
