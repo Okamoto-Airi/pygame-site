@@ -19,7 +19,7 @@
 ---
 
 ## 🎮 ステージ2
-<img src="images/stage2.gif" alt="ステージ2" width="300">
+<img src="images/stage2.gif" alt="ステージ2デモ" width="300">
 
 - 移動：**W / S**
 - 攻撃：**→キー**
@@ -31,7 +31,7 @@
 ---
 
 ## 🎮 ステージ3
-<img src="images/stage3.gif" alt="ステージ3" width="300">
+<img src="images/stage3.gif" alt="ステージ3デモ" width="300">
 
 - 移動：**W / A / S / D**
 - 攻撃：**矢印キー（全方向）**
