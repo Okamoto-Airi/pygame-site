@@ -4,8 +4,8 @@
 このサイトでは、チーム制作で作った **3つのPygameステージ** を
 ブラウザから遊べるようにまとめています！
 
-<p align="center"> 
-  <img src="images/site.png" alt="site_img" height="282px" width="637">
+<p align="center">
+  <img src="images/site.png" alt="site_img" height="300px" width="637">
 </p>
 
 ---
